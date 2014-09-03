@@ -1,0 +1,39 @@
+<h1><%= t(:listing) %> <%= 'Admin' if params[:role]=='admin' %> <%=t :users %></h1>
+
+<table id="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Login</th>
+			<th><%=t :user_name %></th>
+			<th><%=t :user_email %></th>
+			<th>Departamento</th>
+			<th>Telefone</th>
+			<th>Administrador?</th>
+		</tr>
+	</thead>
+	<tbody>
+	 	<% @users.each do |user| %>
+			<tr>
+				<td><%= image_tag user.avatar.url(:thumb) if user.avatar.url.present? %></td>
+				<td><%=h user.login %></td>
+				<td><%=h user.name %></td>
+				<td><%=h user.email %></td>
+				<td><%= user.department.name rescue "" %></td>
+				<td><%= user.telephone %></td>
+				<td><%= user.has_role?("admin")? "Sim" : "Não" %></td>
+				
+				<% if current_user.login == "idenize" or current_user.login == "philipe" or current_user.login == "miriam" or current_user.login == user.login %>
+				<td><%=link_to t(:edit), edit_object_url(user) %></td>
+				<% end %>
+				<% if current_user.login == "idenize"  or current_user.login == "miriam" or current_user.login == "philipe" %>
+				<td><%=link_to t(:destroy), object_url(user), :confirm => t(:are_you_sure), :method => :delete %></td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to t(:new_user), new_object_url %>
+
+<% data_table %>
