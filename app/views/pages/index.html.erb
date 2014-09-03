@@ -4,7 +4,7 @@
 	<ul>
 	<% @events.each do |event| %>
 		<li>
-			<% link_to event_path(event.permalink) do %>
+			<% link_to event.permalink do %>
 				<small><%= l(event.happens_on, :format => :short) %></small>
 				<h3><%= event.name.summary 30 %></h3>
 			<% end %>
@@ -18,7 +18,7 @@
 	<ul>
 	<% @users.each do |user| %>	
 		<li>
-			<% link_to user_path(user) do %>
+			<% link_to do %>
 				<%= image_tag user.avatar.url(:thumb), :size => "70x80" if user.avatar.url.present? %>
 				<h3><%= user.name %></h3>
 				<% if user.birthday.present? %>	
@@ -40,7 +40,7 @@
 	<h2>Últimos Cadastrados</h2>
 	<ul>
 	<% @procedures.each do |procedure| %>		
-		<li><%= link_to procedure.name.summary(45), procedure_path(procedure.permalink) %></li>
+		<li><%= link_to procedure.name.summary(45), procedure.permalink %></li>
 	<% end %>				
 	</ul>
 </div>

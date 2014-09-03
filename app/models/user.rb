@@ -1,12 +1,11 @@
-class User < ActiveRecord::Base
-  
+class User < ActiveRecord::Base  
   # acts_as_authentic already validates presence and format of: login, email, password; also password confirmation
   
-  acts_as_authentic do |c|
-      c.logged_in_timeout = 30.minutes
-      c.validates_format_of_login_field_options = { :with => /^[a-z0-9]+$/ }
-      c.validates_format_of_email_field_options = { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
-  end
+  # acts_as_authentic do |c|
+  #     c.logged_in_timeout = 30.minutes
+  #     c.validates_format_of_login_field_options = { :with => /^[a-z0-9]+$/ }
+  #     c.validates_format_of_email_field_options = { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+  # end
 
   has_and_belongs_to_many :roles
   
@@ -15,9 +14,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  named_scope :admins, :include => :roles, :conditions => ["`roles`.name = ?", "admin"]
+  scope :admins, :include => :roles, :conditions => ["`roles`.name = ?", "admin"]
   
-  default_scope :order => "name ASC"
+  default_scope {order("name ASC")}
   
   has_attached_file :avatar,
                     :styles => { :thumb => "70x80#", :list => "120x140#", :big => "220x240#" },
@@ -46,7 +45,8 @@ class User < ActiveRecord::Base
   
   private
   def self.by_month(month)
-    all(:conditions => ["MONTH(birthday) = ?", month])
+    all
+    # all(:conditions => ["MONTH(birthday) = ?", month])
   end
   
 end

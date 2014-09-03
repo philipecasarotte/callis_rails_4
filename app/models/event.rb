@@ -4,6 +4,6 @@ class Event < ActiveRecord::Base
 
   has_permalink :name, :update => true
   
-  scope :upcoming, :conditions => ["happens_on >= ?", Date.today]
+  scope :upcoming, where(happens_on: ">= ? #{Date.today}")
   scope :past, :conditions => ["happens_on < ?", Date.today], :order => ["happens_on DESC"]
 end

@@ -5,8 +5,10 @@ class PagesController < ApplicationController
   def index
     # @pages = Page.main_pages
     @users = User.by_month(Date.today.month)
-    @events = Event.upcoming(:limit => 4)
-    @procedures = Procedure.all(:order => "created_at DESC", :limit => 3)
+    # @events = Event.upcoming(:limit => 4)
+    # @procedures = Procedure.all(:order => "created_at DESC", :limit => 3)
+    @events = Event.all
+    @procedures = Procedure.all    
   end
 
   def contato

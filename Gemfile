@@ -8,6 +8,7 @@ gem "paperclip"
 gem "has_permalink"
 gem "acts_as_tree"
 gem "authlogic"
+gem "summary"
 
 group :development, :test do
   gem "spring"
