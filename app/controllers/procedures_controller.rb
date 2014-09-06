@@ -2,8 +2,6 @@ class ProceduresController < ApplicationController
   
   before_filter :require_user
   
-  #after_filter(:except => [:search, :index]) {|c| c.cache_page}
-  
   def index
     @procedures = Procedure.by_position.paginate(:page => params[:page], :per_page => 30)
     get_page
@@ -11,8 +9,7 @@ class ProceduresController < ApplicationController
   
 	def search
 	 query = "%#{params[:q].strip}%" if params[:q]
-   # @procedures = Procedure.all :include => {:user, :department}, :conditions => ["`procedures`.name LIKE ? OR `users`.name LIKE ? OR `departments`.name LIKE ?", query, query, query]
-   @procedures = Procedure.all
+   @procedures = Procedure.joins(:user, :department).where("`procedures`.name LIKE ? OR `users`.name LIKE ? OR `departments`.name LIKE ?", query, query, query).all
    get_page
 	end
   

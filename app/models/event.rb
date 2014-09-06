@@ -4,6 +4,16 @@ class Event < ActiveRecord::Base
 
   has_permalink :name, :update => true
   
-  scope :upcoming, where(happens_on: ">= ? #{Date.today}")
-  scope :past, :conditions => ["happens_on < ?", Date.today], :order => ["happens_on DESC"]
+  scope :upcoming, -> {where("happens_on >= ?", Date.today)}
+  scope :past, -> {where("happens_on < ?", Date.today).order("happens_on DESC")}
+  
+  rails_admin do
+    list do
+      exclude_fields :body, :created_at, :updated_at
+    end
+    
+    edit do
+      exclude_fields :permalink
+    end
+  end
 end

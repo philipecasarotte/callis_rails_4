@@ -1,6 +1,9 @@
 <%= image_tag "books.png", :alt => "Books", :title => "Books", :width => "920", :height => "120", :id => "banner" %>
 <%= form_for @user_session, :url => user_session_path, :html => {:id => "login"} do |f| %>
 	<h2>Login</h2>
+	  <% @user_session.errors.full_messages.each do |msg| %>
+      	<p><%= msg %></p>
+	  <% end %>
 
 	<%= f.label :login, "Username:" %>
 	<%= f.text_field :login %>

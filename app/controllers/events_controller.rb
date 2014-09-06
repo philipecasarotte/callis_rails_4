@@ -9,7 +9,7 @@ class EventsController < ApplicationController
     get_page
   end
   
-  def arquivo
+  def past
     @events = Event.past
     get_page
   end

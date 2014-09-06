@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
                     :path => PAPERCLIP_PATH,
                     :url => PAPERCLIP_URL,
                     :default_url => ""
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/ 
+  attr_accessor :delete_avatar
+  before_validation { self.avatar.clear if self.delete_avatar == '1' }                    
   
   # has_role? simply needs to return true or false whether a user has a role or not.  
   # It may be a good idea to have "admin" roles return true always
@@ -43,10 +46,19 @@ class User < ActiveRecord::Base
     end
   end
   
+  rails_admin do
+    list do
+      exclude_fields :created_at, :updated_at, :crypted_password, :password, :salt, :remember_token, :remember_token_expires_at, :persistence_token, :perishable_token, :password_salt, :last_request_at, :email, :roles, :procedures, :login
+    end
+    
+    edit do
+      exclude_fields :created_at, :updated_at, :crypted_password, :salt, :remember_token, :remember_token_expires_at, :persistence_token, :perishable_token, :password_salt, :last_request_at
+    end
+  end
+  
   private
   def self.by_month(month)
-    all
-    # all(:conditions => ["MONTH(birthday) = ?", month])
+    all.where("MONTH(birthday) = ?", month)
   end
   
 end

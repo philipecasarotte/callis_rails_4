@@ -1,4 +1,4 @@
 <h1>Eventos &raquo; <%= @event.name %></h1>
 <small class="event"><%= l(@event.happens_on, :format => :long) %></small>
-<%= @event.body %>
-<div id="navigation"><%= link_to "&laquo; Voltar", :back %></div>
+<%= @event.body.html_safe %>
+<div id="navigation"><%= link_to "Voltar", :back %></div>

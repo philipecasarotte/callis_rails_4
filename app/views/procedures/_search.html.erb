@@ -1,5 +1,4 @@
-<% form_tag "/", :method => :get do %>
-	<%= text_field_tag "q", params[:q] || "digite aqui sua palavra-chave" %>
+<%= form_tag "/procedimentos/busca", :method => :get do %>
+	<%= text_field_tag "q", params[:q], :placeholder => "digite aqui sua palavra-chave" %>
 	<%= submit_tag("Buscar", :class => "submit") %>
 <% end %>
-<%#= javascript "procedures/search" %>

@@ -17,21 +17,21 @@
 			</div>
 			<div id="place">
 				<h2>Local na callis</h2>
-				<dd><%= @procedure.place %></dd>
+				<dd><%= @procedure.place.html_safe %></dd>
 			</div>
 			<div id="warnings">
 				<h2>Cuidados</h2>
-				<dd><%= @procedure.warning %></dd>
+				<dd><%= @procedure.warning.html_safe %></dd>
 			</div>
 		</div>
 		<div id="explanation">
 			<h2>Passo a Passo</h2>
-			<%= @procedure.explanation %>
+			<%= @procedure.explanation.html_safe %>
 		</div>
 		<div id="steps">
 			<h2>Etapas</h2>
-			<%= @procedure.steps %>
+			<%= @procedure.steps.html_safe %>
 		</div>
 	</div>
 </div>
-<div id="navigation"><%= link_to_function "Imprimir", "window.print();", :class => "print" %><%= link_to "&laquo; Ver Todos os Procedimentos", procedures_path %></div>
+<div id="navigation"><%= link_to "Imprimir", "#", :onclick => "window.print();return false;", :class => "print" %><%= link_to "Ver Todos os Procedimentos", procedures_path %></div>
