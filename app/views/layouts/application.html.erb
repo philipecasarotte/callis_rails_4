@@ -1,13 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CallisNew</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<%= yield %>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Callis</title>
 
-</body>
+		<%= stylesheet_link_tag 'application', media: 'all' %>
+		<%= csrf_meta_tags %>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="content-language" content="en"/>
+		<meta name="author" content="DBurns Design - Professional Website Design in Los Angeles, California"/>
+		<meta name="distribution" content="global"/>
+		<meta name="revisit-after" content="30 days"/>
+		<meta name="copyright" content="DBurns Design"/>
+
+		<link href="/favicon.ico" type="image/x-icon" rel="icon"/>
+		<link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+		
+		<%= yield :head %>
+	</head>
+	<body>
+		<div id="main">
+			<div id="top">
+				<%= link_to image_tag("editora_callis.png", :alt => "Editora Callis", :title => "Editora Callis", :width => "300", :height => "137"), root_path %>
+				<p>Intranet Editora Callis | <%= link_to "Administrativo" %> | <%= link_to "Login/Logout", "#" %></p>
+				<ul>
+					<li><%= link_to "Home", root_path %></li>
+					<li><%= link_to "Procedimentos", procedures_path %></li>
+					<li><%= link_to "Eventos", events_path %></li>
+					<li><%= link_to "Aniversariantes", users_path %></li>												
+				</ul>
+			</div>
+			<!-- <% [:error, :notice].each do |message| %>
+				<% content_tag :div, :class => message do %>
+					<%= flash[message] %>
+				<% end if flash[message] %>
+			<% end %> -->
+			<%= yield  %>
+			<div id="footer">
+				Design and <%= link_to 'Ruby on Rails Development', 'http://www.philipecasarotte.com.br', :target => '_blank' %> by Philipe Casarotte<br/>
+				&copy; Todos os direitos reservados
+			</div>
+		</div>
+	</body>
 </html>
