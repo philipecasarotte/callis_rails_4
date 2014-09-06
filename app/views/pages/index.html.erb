@@ -31,7 +31,7 @@
 	</ul>
 <% else %>
 	Nenhum aniversariante<br/>
-	no mês de <%= l(Date.today, :format => :only_month) %>
+	no mês de <%= Date.today %>
 <% end %>
 </div>
 <div id="procedures">
@@ -40,7 +40,7 @@
 	<h2>Últimos Cadastrados</h2>
 	<ul>
 	<% @procedures.each do |procedure| %>		
-		<li><%= link_to procedure.name.summary(45), procedure.permalink %></li>
+		<li><%= link_to procedure.name.summary(45), procedure_path(procedure.permalink) %></li>
 	<% end %>				
 	</ul>
 </div>

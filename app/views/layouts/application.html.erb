@@ -22,7 +22,7 @@
 		<div id="main">
 			<div id="top">
 				<%= link_to image_tag("editora_callis.png", :alt => "Editora Callis", :title => "Editora Callis", :width => "300", :height => "137"), root_path %>
-				<p>Intranet Editora Callis | <%= link_to "Administrativo" %> | <%= link_to "Login/Logout", "#" %></p>
+				<p>Intranet Editora Callis | <%= link_to "Administrativo", "/admin/user_session/new" %> | <%= link_to "Login/Logout", login_url %></p>
 				<ul>
 					<li><%= link_to "Home", root_path %></li>
 					<li><%= link_to "Procedimentos", procedures_path %></li>

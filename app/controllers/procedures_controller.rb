@@ -11,7 +11,8 @@ class ProceduresController < ApplicationController
   
 	def search
 	 query = "%#{params[:q].strip}%" if params[:q]
-   @procedures = Procedure.all :include => {:user, :department}, :conditions => ["`procedures`.name LIKE ? OR `users`.name LIKE ? OR `departments`.name LIKE ?", query, query, query]
+   # @procedures = Procedure.all :include => {:user, :department}, :conditions => ["`procedures`.name LIKE ? OR `users`.name LIKE ? OR `departments`.name LIKE ?", query, query, query]
+   @procedures = Procedure.all
    get_page
 	end
   

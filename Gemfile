@@ -7,6 +7,7 @@ gem "uglifier", ">= 1.3.0"
 gem "paperclip"
 gem "has_permalink"
 gem "acts_as_tree"
+gem "scrypt"
 gem "authlogic"
 gem "summary"
 

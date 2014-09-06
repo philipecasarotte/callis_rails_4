@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base  
   # acts_as_authentic already validates presence and format of: login, email, password; also password confirmation
   
-  # acts_as_authentic do |c|
-  #     c.logged_in_timeout = 30.minutes
-  #     c.validates_format_of_login_field_options = { :with => /^[a-z0-9]+$/ }
-  #     c.validates_format_of_email_field_options = { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
-  # end
+  acts_as_authentic # do |c|
+#       c.logged_in_timeout = 30.minutes
+#       c.validates_format_of_login_field_options = { :with => /^[a-z0-9]+$/ }
+#       c.validates_format_of_email_field_options = { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+#   end
 
   has_and_belongs_to_many :roles
   
