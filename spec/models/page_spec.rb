@@ -10,7 +10,7 @@ describe Page do
   
 
   it "should have the children method" do
-    @page = Factory(:page)
+    @page = FactoryGirl.create(:page)
     @page.children.create.should respond_to(:children)
     Page.new.children.should be_kind_of(Array)
     
@@ -23,9 +23,9 @@ describe Page do
   end
 
   it "should update the permalink when update the title" do
-    @page = Factory(:about)
+    @page = FactoryGirl.create(:about)
     @page.update_attribute(:name, "Home")
-    @page.permalink.should == "home"
+    @page.permalink.should eq("home")
   end
 
   context "with duplicated title" do
@@ -45,17 +45,17 @@ describe Page do
     end
 
     it "should have different permalinks" do
-      @page_one.permalink.should == 'page'
-      @page_two.permalink.should == 'page-2'
-      @page_three.permalink.should == 'page-3'
+      @page_one.permalink.should eq('page')
+      @page_two.permalink.should eq('page-1')
+      @page_three.permalink.should eq('page-2')
     
-      @page_one.to_param.should == "#{@page_one.id}-page"
+      @page_one.to_param.should eq("#{@page_one.id}-page")
     end
   end
 
   context "protected" do
     before(:each) do
-      @page = Factory(:page, :is_protected => true)
+      @page = FactoryGirl.create(:page, :is_protected => true)
     end
 
     it "should not change the permalink" do

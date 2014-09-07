@@ -7,7 +7,6 @@ class PagesController < ApplicationController
     @users = User.by_month(Date.today.month)
     @events = Event.upcoming.limit(4)
     @procedures = Procedure.all.order("created_at DESC").limit(3)
-    @events = Event.all
   end
 
   def contato

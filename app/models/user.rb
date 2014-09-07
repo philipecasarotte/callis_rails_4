@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  scope :admins, :include => :roles, :conditions => ["`roles`.name = ?", "admin"]
+  scope :admins, -> {includes(:roles).where("`roles`.name = ?", "admin")}
   
-  default_scope {order("name ASC")}
+  default_scope {order("MONTH(birthday) ASC")}
   
   has_attached_file :avatar,
                     :styles => { :thumb => "70x80#", :list => "120x140#", :big => "220x240#" },
