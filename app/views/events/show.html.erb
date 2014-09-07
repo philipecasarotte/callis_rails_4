@@ -1,4 +1,4 @@
 <h1>Eventos &raquo; <%= @event.name %></h1>
-<small class="event"><%= l(@event.happens_on, :format => :long) %></small>
+<small class="event"><%= l(@event.happens_on, :format => :long) %><%= " | Archived" if @event.happens_on < Date.today %></small>
 <%= @event.body.html_safe %>
 <div id="navigation"><%= link_to "Voltar", :back %></div>

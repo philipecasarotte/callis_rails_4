@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20091027001635) do
+ActiveRecord::Schema.define(version: 20091106222054) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -54,6 +54,22 @@ ActiveRecord::Schema.define(version: 20091027001635) do
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", unique: true, using: :btree
+
+  create_table "procedures", force: true do |t|
+    t.string   "name"
+    t.text     "explanation"
+    t.text     "steps"
+    t.text     "warning"
+    t.text     "place"
+    t.integer  "user_id"
+    t.integer  "department_id"
+    t.string   "department_division"
+    t.string   "periodicity"
+    t.string   "permalink"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string "name"
