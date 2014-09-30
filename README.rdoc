@@ -1,5 +1,4 @@
-[![Codeship Status for philipecasarotte/callis_rails_4](https://www.codeship.io/projects/0bb7c3b0-2b01-0132-e57f-325018e90329/status?branch=master)](https://www.codeship.io/projects/38459)
-"!https://www.codeship.io/projects/0bb7c3b0-2b01-0132-e57f-325018e90329/status?branch=master!":https://www.codeship.io/projects/38459
+{<img alt="Status?branch=master" src="https://www.codeship.io/projects/0bb7c3b0-2b01-0132-e57f-325018e90329/status?branch=master" />}[https://www.codeship.io/projects/38459]
 
 == Intranet System for Callis Publishing Company
 
