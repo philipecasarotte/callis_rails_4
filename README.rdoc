@@ -1,30 +1,11 @@
-[ ![Codeship Status for philipecasarotte/callis_rails_4](https://www.codeship.io/projects/0bb7c3b0-2b01-0132-e57f-325018e90329/status)](https://www.codeship.io/projects/38459)
+[![Codeship Status for philipecasarotte/callis_rails_4](https://www.codeship.io/projects/0bb7c3b0-2b01-0132-e57f-325018e90329/status?branch=master)](https://www.codeship.io/projects/38459)
 
-== README
+== Intranet System for Callis Publishing Company
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Employees are able to:
 
-Things you may want to cover:
+* Find co-works contact information
 
-* Ruby version
+* Browse trhough procedures by department
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Be informed on upcoming events
