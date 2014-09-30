@@ -1,3 +1,5 @@
+[ ![Codeship Status for philipecasarotte/callis_rails_4](https://www.codeship.io/projects/0bb7c3b0-2b01-0132-e57f-325018e90329/status)](https://www.codeship.io/projects/38459)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
