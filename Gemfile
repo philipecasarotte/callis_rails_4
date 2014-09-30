@@ -12,6 +12,7 @@ gem "authlogic"
 gem "summary"
 gem "will_paginate"
 gem "rails_admin"
+gem "capistrano"
 
 group :development, :test do
   gem "spring"
