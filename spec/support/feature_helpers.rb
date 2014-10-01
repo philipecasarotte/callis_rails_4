@@ -1,13 +1,23 @@
 module FeatureHelpers
-  def login_as(email)
+  def login_as(login)
     visit "/"
     click_link "Login/Logout"
-    fill_in "login", with: email
-    fill_in "password", with: "test"
+    fill_in "user_session[login]", with: login
+    fill_in "user_session[password]", with: "secret"
     click_button "Login"
   end
 end
 
-# RSPec.configure do |config|
-#   config.include(FeatureHelpers, type: :feature)
-# end
+module Authlogic
+  module TestHelper
+    def create_user_session(user)
+      post login_path, login: user.login, password: user.password
+    end
+  end
+end
+
+# Make this available to just the request and feature specs
+RSpec.configure do |config|
+  config.include Authlogic::TestHelper, type: :request
+  config.include Authlogic::TestHelper, type: :feature
+end

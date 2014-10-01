@@ -7,25 +7,10 @@ describe Page do
   it { should have_many(:children) }  
   it { should validate_presence_of(:name) }
   it { should have_db_column(:position) }  
-  
-
-  it "should have the children method" do
-    @page = FactoryGirl.create(:page)
-    @page.children.create.should respond_to(:children)
-    Page.new.children.should be_kind_of(Array)
-    
-    @page.children.size.should == 1
-  end
 
   it "should have a permalink when saved" do
     page = Page.create(:name => "Title of Permalink", :body => "Testing text!")
     page.permalink.should == "title-of-permalink"
-  end
-
-  it "should update the permalink when update the title" do
-    @page = FactoryGirl.create(:about)
-    @page.update_attribute(:name, "Home")
-    @page.permalink.should eq("home")
   end
 
   context "with duplicated title" do
@@ -39,9 +24,9 @@ describe Page do
     end
 
     it "should be able to be created" do
-      @page_one.new_record?.should be_false
-      @page_two.new_record?.should be_false
-      @page_three.new_record?.should be_false
+      @page_one.new_record?.should be false
+      @page_two.new_record?.should be false
+      @page_three.new_record?.should be false
     end
 
     it "should have different permalinks" do
@@ -49,7 +34,7 @@ describe Page do
       @page_two.permalink.should eq('page-1')
       @page_three.permalink.should eq('page-2')
     
-      @page_one.to_param.should eq("#{@page_one.id}-page")
+      @page_one.to_param.should eq("page")
     end
   end
 
@@ -60,7 +45,7 @@ describe Page do
 
     it "should not change the permalink" do
       permalink = @page.permalink
-      @page.is_protected.should be_true
+      @page.is_protected.should be true
 
       @page.update_attribute(:name,"CHANGED")
       @page.permalink.should == permalink

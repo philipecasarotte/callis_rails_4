@@ -5,15 +5,17 @@ FactoryGirl.define do
     body "This event will happen in the future. Pretty cool, eh?"
   end
   
-  factory :past_event do
-    name "Past Event"
-    happens_on Date.yesterday
-    body "This event happened in the past. You missed it."
-  end
-  
-  factory :user do
-    title "This photo is cool"
-    avatar { File.new("#{Rails.root}/spec/support/fixtures/files/test.jpg") } 
+  factory :user do |u|
+    u.avatar { File.new("#{Rails.root}/spec/support/fixtures/files/test.jpg") } 
+    u.login "philipe"
+    u.email "philipe@test.com"
+    u.name 'User'
+    u.birthday "1985-05-08"
+    u.password 'secret'
+    u.password_confirmation 'secret'
+    u.password_salt salt = Authlogic::Random.hex_token
+    u.crypted_password Authlogic::CryptoProviders::Sha512.encrypt("secret" + salt)
+    u.perishable_token Authlogic::Random.friendly_token
   end
   
   factory :page do |p|
